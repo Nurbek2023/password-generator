@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   const [password, setPassword] = useState('');
   const [length, setLength] = useState(8); // Default length for password
+  const [strength, setStrength] = useState(''); // Define strength state
 
   // Function to generate password
   const generatePassword = () => {
@@ -15,6 +16,27 @@ function App() {
       generatedPassword += charset[randomIndex];
     }
     setPassword(generatedPassword);
+    evaluateStrength(generatedPassword); // Corrected this to pass the generated password
+  };
+
+  // Function to evaluate password strength
+  const evaluateStrength = (password) => {
+    let strengthLevel = 'Weak';
+
+    // Check for different criteria
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasLowercase = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+[\]{}|;:,.<>?]/.test(password);
+
+    // Password strength rules
+    if (password.length >= 12 && hasUppercase && hasLowercase && hasNumber && hasSpecialChar) {
+      strengthLevel = 'Strong';
+    } else if (password.length >= 8 && (hasUppercase || hasLowercase) && hasNumber) {
+      strengthLevel = 'Medium';
+    }
+
+    setStrength(strengthLevel); // Update strength state
   };
 
   // Function to copy password to clipboard
@@ -42,7 +64,10 @@ function App() {
       <div className="password-result">
         <p>{password}</p>
         {password && (
-          <button onClick={copyToClipboard}>Copy to Clipboard</button>
+          <>
+            <button onClick={copyToClipboard}>Copy to Clipboard</button>
+            <p>Password Strength: {strength}</p> {/* Display password strength */}
+          </>
         )}
       </div>
     </div>
@@ -50,4 +75,3 @@ function App() {
 }
 
 export default App;
-

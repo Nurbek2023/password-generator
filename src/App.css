@@ -41,3 +41,19 @@ button:hover {
   background-color: #45a049;
 }
 
+.password-result p {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.password-result .weak {
+  color: #ff0000; /* Red for Weak */
+}
+
+.password-result .medium {
+  color: #ff8000; /* Orange for Medium */
+}
+
+.password-result .strong {
+  color: #00ff00; /* Green for Strong */
+}
