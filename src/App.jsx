@@ -17,6 +17,14 @@ function App() {
     setPassword(generatedPassword);
   };
 
+  // Function to copy password to clipboard
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(password).then(
+      () => alert('Password copied to clipboard!'),
+      (err) => alert('Failed to copy password: ', err)
+    );
+  };
+
   return (
     <div className="App">
       <h1>Password Generator</h1>
@@ -33,6 +41,9 @@ function App() {
       </div>
       <div className="password-result">
         <p>{password}</p>
+        {password && (
+          <button onClick={copyToClipboard}>Copy to Clipboard</button>
+        )}
       </div>
     </div>
   );
