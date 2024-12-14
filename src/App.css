@@ -1,10 +1,33 @@
-.App {
+/* .App {
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
   max-width: 400px;
   margin: auto;
+} */
+
+/* Ensure body takes up full height and centers its content */
+body {
+  margin: 0;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
 }
+
+/* App container styles */
+.App {
+  font-family: Arial, sans-serif;
+  max-width: 400px;
+  text-align: center;
+  border: 2px solid red; /* Debugging border */
+  padding: 20px; /* Add some space around the content */
+}
+
+
+
+
+
 
 input {
   padding: 10px;
